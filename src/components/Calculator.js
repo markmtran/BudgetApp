@@ -1,12 +1,15 @@
 import React from 'react';
-import { Grid, InputAdornment, TextField, Typography } from '@material-ui/core';
+import { Button, Grid, InputAdornment, TextField, Typography } from '@material-ui/core';
 
 const Calculator = () => {
   return (
-    <Grid container justify='center' alignItems='center'>
-      <Grid container justify='center' alignItems='center' style={{width: '100%'}}>
-        <Grid container item style={{width: '100%'}}>
-          <Typography>How much did you make this month? </Typography>
+    <Grid container item justify='center' alignItems='center' xs={12} spacing={10}>
+      <Grid container item xs={12} style={{marginTop: 100}}>
+        <Grid container item xs={5} justify='flex-end' alignItems='center'>
+          <Typography>Monthly Earnings:</Typography>
+        </Grid>
+        <Grid item xs={1}/>
+        <Grid container item xs={6}>
           <TextField 
             variant="outlined" 
             InputProps={{
@@ -15,11 +18,17 @@ const Calculator = () => {
             }} 
             type='number'
             size='small'
+            defaultValue={0}
           />
-        </Grid>
+        </Grid> 
+      </Grid>
 
-        <Grid container item style={{width: '100%'}}>
-          <Typography>Expected Bill Expenses: </Typography>
+      <Grid container item xs={12}>
+        <Grid container item xs={5} justify='flex-end' alignItems='center'>
+          <Typography>Expected Bill Expenses:</Typography>
+        </Grid>
+        <Grid item xs={1}/>
+        <Grid container item xs={6}>
           <TextField 
             variant="outlined" 
             InputProps={{
@@ -28,11 +37,17 @@ const Calculator = () => {
             }} 
             type='number'
             size='small'
+            defaultValue={0}
           />
+        </Grid> 
+      </Grid>
+      
+      <Grid container item xs={12}>
+        <Grid container item xs={5} justify='flex-end' alignItems='center'>
+          <Typography>Expected Grocery Expenses:</Typography>
         </Grid>
-
-        <Grid container item style={{width: '100%'}}>
-          <Typography>Expected Grocery Expenses: </Typography>
+        <Grid item xs={1}/>
+        <Grid container item xs={6}>
           <TextField 
             variant="outlined" 
             InputProps={{
@@ -41,11 +56,17 @@ const Calculator = () => {
             }} 
             type='number'
             size='small'
-          />      
-        </Grid>
+            defaultValue={0}
+          />
+        </Grid> 
+      </Grid>
 
-        <Grid container item style={{width: '100%'}}>
-          <Typography>How much will you put in savings? </Typography>
+      <Grid container item xs={12}>
+        <Grid container item xs={5} justify='flex-end' alignItems='center'>
+          <Typography>Amount to Save:</Typography>
+        </Grid>
+        <Grid item xs={1}/>
+        <Grid container item xs={6}>
           <TextField 
             variant="outlined" 
             InputProps={{
@@ -54,21 +75,26 @@ const Calculator = () => {
             }} 
             type='number'
             size='small'
-          />      
-        </Grid>
+            defaultValue={0}
+          />
+        </Grid> 
+      </Grid>
 
-        <Grid container item style={{width: '100%'}}>
-          <Typography>Amount Left: </Typography>
-          <TextField 
-            variant="outlined" 
-            InputProps={{
-              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-              inputProps: {min: 0}
-            }} 
-            type='number'
-            size='small'
-          />      
+      <Grid container item xs={12}>
+        <Grid item xs={6}/>
+        <Grid container item xs={6}>
+          <Button variant='contained' color='primary'>Submit</Button>
         </Grid>
+      </Grid>
+
+      <Grid container item xs={12}>
+        <Grid container item xs={5} justify='flex-end' alignItems='center'>
+          <Typography>Amount Available:</Typography>
+        </Grid>
+        <Grid item xs={1}/>
+        <Grid container item xs={6}>
+          <Typography>$0</Typography>
+        </Grid> 
       </Grid>
     </Grid>
   );
