@@ -1,14 +1,75 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import { Grid, InputAdornment, TextField, Typography } from '@material-ui/core';
 
 const Calculator = () => {
   return (
-    <Grid container>
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="standard-basic" label="Standard" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      </form>
+    <Grid container justify='center' alignItems='center'>
+      <Grid container justify='center' alignItems='center' style={{width: '100%'}}>
+        <Grid container item style={{width: '100%'}}>
+          <Typography>How much did you make this month? </Typography>
+          <TextField 
+            variant="outlined" 
+            InputProps={{
+              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+              inputProps: {min: 0}
+            }} 
+            type='number'
+            size='small'
+          />
+        </Grid>
+
+        <Grid container item style={{width: '100%'}}>
+          <Typography>Expected Bill Expenses: </Typography>
+          <TextField 
+            variant="outlined" 
+            InputProps={{
+              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+              inputProps: {min: 0}
+            }} 
+            type='number'
+            size='small'
+          />
+        </Grid>
+
+        <Grid container item style={{width: '100%'}}>
+          <Typography>Expected Grocery Expenses: </Typography>
+          <TextField 
+            variant="outlined" 
+            InputProps={{
+              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+              inputProps: {min: 0}
+            }} 
+            type='number'
+            size='small'
+          />      
+        </Grid>
+
+        <Grid container item style={{width: '100%'}}>
+          <Typography>How much will you put in savings? </Typography>
+          <TextField 
+            variant="outlined" 
+            InputProps={{
+              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+              inputProps: {min: 0}
+            }} 
+            type='number'
+            size='small'
+          />      
+        </Grid>
+
+        <Grid container item style={{width: '100%'}}>
+          <Typography>Amount Left: </Typography>
+          <TextField 
+            variant="outlined" 
+            InputProps={{
+              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+              inputProps: {min: 0}
+            }} 
+            type='number'
+            size='small'
+          />      
+        </Grid>
+      </Grid>
     </Grid>
   );
 }
