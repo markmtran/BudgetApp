@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Income from './Income';
 import Expense from './Expense';
 
+
+
 const Calculator = () => {
-  const totalIncome = 0;
-  const totalExpense = 0;
+  const [ totalIncome, setTotalIncome ] = useState(0);
+  const [ totalExpense, setTotalExpense ] = useState(0);
   const remaining = totalIncome - totalExpense;
 
   return (
     <Grid container item justify='center' alignItems='center' xs={12} spacing={6}>
-      <Income style={{marginTop: 100}} />
+      <Income totalIncome={totalIncome} setTotalIncome={setTotalIncome} />
       <Expense />
 
       <Grid container item xs={12}>

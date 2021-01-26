@@ -3,19 +3,19 @@ import { Grid, InputAdornment, TextField } from '@material-ui/core';
 import AddBtn from './AddBtn';
 import DeleteBtn from './DeleteBtn';
 
-const Income = () => {
-  const [ incomeName, setIncomeName ] = useState("");
+const Income = (props) => {
+  const [ incomeName, setIncomeName ] = useState("Income Item");
   const [ incomeValue, setIncomeValue ] = useState(0);
 
   const handleIncomeName = (e) => {
     setIncomeName(e.target.value);
   };
   const handleIncomeValue = (e) => {
-    setIncomeValue(e.target.value);
+    props.setTotalIncome(props.totalIncome + parseInt(e.target.value));
   };
 
   const handleAdd = (e) => {
-    
+
   }
 
   return (
@@ -27,6 +27,7 @@ const Income = () => {
           onChange={handleIncomeName} 
           type='text'
           size='small'
+          defaultValue={incomeName}
         />
       </Grid>
       <Grid container item xs={2} justify='center'>
@@ -38,8 +39,8 @@ const Income = () => {
           }} 
           type='number'
           size='small'
-          
           onChange={handleIncomeValue}
+          defaultValue={incomeValue}
         />
       </Grid> 
       <Grid container item xs={5}>
