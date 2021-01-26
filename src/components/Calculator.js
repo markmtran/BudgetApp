@@ -6,13 +6,14 @@ import Expense from './Expense';
 
 
 const Calculator = () => {
+  const [ incomeList, setIncomeList ] = useState([]);
   const [ totalIncome, setTotalIncome ] = useState(0);
   const [ totalExpense, setTotalExpense ] = useState(0);
   const remaining = totalIncome - totalExpense;
 
   return (
     <Grid container item justify='center' alignItems='center' xs={12} spacing={6}>
-      <Income totalIncome={totalIncome} setTotalIncome={setTotalIncome} />
+      <Income totalIncome={totalIncome} setTotalIncome={setTotalIncome}/>
       <Expense />
 
       <Grid container item xs={12}>
