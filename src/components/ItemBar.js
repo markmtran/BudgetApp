@@ -6,15 +6,6 @@ const ItemBar = (props) => {
   const [ type, setType ] = useState("");
   const [ amount, setAmount ] = useState(0);
 
-  const handleName = (e) => {
-    setName(e.target.value);
-  }
-  const handleAmount = (e) => {
-    setAmount(e.target.value);
-  }
-  const handleType= (e) => {
-    setType(e.target.value);
-  }
   const handleAdd = () => {
     props.addTransaction([...props.transactions, { name: name, type: type, amount: amount}]);
     type === 'Income' ? props.setTotalIncome(props.totalIncome + parseInt(amount)) : props.setTotalExpense(props.totalExpense + parseInt(amount));
@@ -28,7 +19,7 @@ const ItemBar = (props) => {
           variant='outlined' 
           type='text'
           size='small'
-          onChange={handleName}
+          onChange={(e) => {setName(e.target.value)}}
         />
       </Grid>
       <Grid container item xs={2} justify='center'>
@@ -42,12 +33,12 @@ const ItemBar = (props) => {
             startAdornment: <InputAdornment position='start'>$</InputAdornment>,
             inputProps: {min: 0}
           }} 
-          onChange={handleAmount}
+          onChange={(e) => {setAmount(e.target.value)}}
         />
       </Grid> 
       <Grid container item xs={5}>
         <FormControl required>
-          <RadioGroup row onChange={handleType}>
+          <RadioGroup row onChange={(e) => {setType(e.target.value)}}>
             <FormControlLabel 
               value='Income'
               label='Income'

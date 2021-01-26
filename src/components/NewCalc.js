@@ -4,7 +4,6 @@ import ItemBar from './ItemBar';
 import TotalLabel from './TotalLabel';
 import Transactions from './Transactions';
 
-
 const NewCalc = () => {
   const [ transactions, addTransaction ] = useState([]);
   const [ totalIncome, setTotalIncome ] = useState(0);
