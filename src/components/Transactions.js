@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableFooter, TableRow } from '@material-ui/core';
+import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {
     maxwidth: 650
+  },
+  header: {
+    fontWeight: 'bold'
   }
 });
 
-const Transactions = () => {
+const Transactions = (props) => {
   const classes = useStyles();
+
   return (
     <Grid container xs={12}>
       <Grid item xs={4} />
@@ -18,12 +22,19 @@ const Transactions = () => {
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Item Name</TableCell>
-                <TableCell align="right">Type</TableCell>
-                <TableCell align='right'>Amount ($)</TableCell>
+                <TableCell className={classes.header}>Item Name</TableCell>
+                <TableCell className={classes.header} align='center'>Type</TableCell>
+                <TableCell className={classes.header} align='right'>Amount ($)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
+              {(props.transactions).map((transaction) => (
+                <TableRow>
+                  <TableCell>{transaction.name}</TableCell>
+                  <TableCell align='center'>{transaction.type}</TableCell>
+                  <TableCell align='right'>{transaction.amount}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
