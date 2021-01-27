@@ -9,7 +9,7 @@ const Calculator = () => {
   const [ totalIncome, setTotalIncome ] = useState(0);
   const [ totalExpense, setTotalExpense ] = useState(0);
   const netIncome = totalIncome - totalExpense;
-
+  console.log(transactions);
   return (
     <Grid container item justify='center' alignItems='center' xs={12} spacing={6}>
       <ItemBar 
@@ -20,7 +20,14 @@ const Calculator = () => {
         totalExpense={totalExpense}
         setTotalExpense={setTotalExpense}
       />
-      <Transactions transactions={transactions} setTransactions={setTransactions}/>
+      <Transactions 
+        transactions={transactions} 
+        setTransactions={setTransactions}
+        totalIncome={totalIncome}
+        setTotalIncome={setTotalIncome}
+        totalExpense={totalExpense}
+        setTotalExpense={setTotalExpense}
+      />
       <Totals totalIncome={totalIncome} totalExpense={totalExpense} netIncome={netIncome} />
     </Grid>
   );

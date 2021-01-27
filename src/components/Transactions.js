@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import DeleteBtn from './DeleteBtn';
+import { IconButton, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const useStyles = makeStyles({
   table: {
@@ -17,8 +17,15 @@ const Transactions = (props) => {
   const classes = useStyles();
   
   const handleDelete = (i) => {
-    props.transactions.splice(i, 1);
-    props.setTransactions(props.transactions);
+    const newTransactions = [...props.transactions];
+    const deletedItemArray = newTransactions.splice(i, 1);
+    const deletedItem = deletedItemArray[0];
+    props.setTransactions(newTransactions);
+    if (deletedItem.type === 'Income') {
+      props.setTotalIncome(props.totalIncome - parseInt(deletedItem.amount));
+    } else if (deletedItem.type === 'Expense') {
+      props.setTotalExpense(props.totalExpense - parseInt(deletedItem.amount));
+    }
   };
 
   return (
@@ -41,7 +48,11 @@ const Transactions = (props) => {
                   <TableCell>{transaction.name}</TableCell>
                   <TableCell align='center'>{transaction.type}</TableCell>
                   <TableCell align='center'>{transaction.amount}</TableCell>
-                  <TableCell align='right' padding='none'><DeleteBtn onClick={() => handleDelete(i)}/></TableCell>
+                  <TableCell align='right' padding='none'>
+                    <IconButton onClick={() => handleDelete(i)}>
+                      <ClearIcon color='secondary'/>
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

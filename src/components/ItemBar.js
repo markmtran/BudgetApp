@@ -6,6 +6,9 @@ const ItemBar = (props) => {
   const [ type, setType ] = useState("");
   const [ amount, setAmount ] = useState(0);
   const [ color, setColor ] = useState('white');
+  const [ isNameFilled, setIsNameFilled ] = useState(false);
+  const [ isAmountFilled, setIsAmountFilled ] = useState(false);
+  const [ isTypeChecked, setIsTypeChecked ] = useState(false);
 
   const handleTypeAndColor = (e) => {
     setType(e.target.value);
@@ -21,6 +24,20 @@ const ItemBar = (props) => {
     type === 'Income' ? props.setTotalIncome(props.totalIncome + parseInt(amount)) : props.setTotalExpense(props.totalExpense + parseInt(amount));
   }
 
+  const checkName = (e) => {
+    if (e.target.value.length > 0) {
+      setName(e.target.value);
+      setIsNameFilled(true);
+    }
+  }
+
+  const checkAmount = (e) => {
+    if (e.target.value.length > 0) {
+      setAmount(e.target.value);
+      setIsAmountFilled(true);
+    }
+  }
+
   return (
     <Grid container item xs={12} spacing={2}>
       <Grid container item xs={12}>
@@ -32,7 +49,7 @@ const ItemBar = (props) => {
             variant='outlined' 
             type='text'
             size='small'
-            onChange={(e) => {setName(e.target.value)}}
+            onChange={(e) => {checkName(e)}}
           />
         </Grid>
         <Grid container item xs={12} md={2} justify='center'>
@@ -47,7 +64,7 @@ const ItemBar = (props) => {
               startAdornment: <InputAdornment position='start'>$</InputAdornment>,
             }} 
             inputProps={{min: 0, style: { textAlign: 'right'}}}
-            onChange={(e) => {setAmount(e.target.value)}}
+            onChange={(e) => {checkAmount(e)}}
           />
         </Grid> 
         <Grid item md={4} />
@@ -56,7 +73,7 @@ const ItemBar = (props) => {
         <Grid item md={4} />
         <Grid container item xs={12} md={4} justify='center'>
           <FormControl required>
-            <RadioGroup row onChange={handleTypeAndColor}>
+            <RadioGroup row onChange={(e) => {handleTypeAndColor(e); setIsTypeChecked(true)}}>
               <FormControlLabel 
                 value='Income'
                 label='Income'
@@ -69,7 +86,7 @@ const ItemBar = (props) => {
               />
             </RadioGroup>
           </FormControl>
-          <Button onClick={handleAdd} variant='contained' color='primary'>Add</Button>
+          <Button disabled={!(isNameFilled && isAmountFilled && isTypeChecked)} onClick={handleAdd} variant='contained' color='primary'>Add</Button>
         </Grid>
         <Grid item md={4} />
       </Grid>
