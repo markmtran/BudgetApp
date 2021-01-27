@@ -11,47 +11,56 @@ const ItemBar = (props) => {
     type === 'Income' ? props.setTotalIncome(props.totalIncome + parseInt(amount)) : props.setTotalExpense(props.totalExpense + parseInt(amount));
   }
   return (
-    <Grid container item xs={12}>
-      <Grid container item xs={12} md={5} justify='flex-end' alignItems='center'>
-        <TextField 
-          required
-          placeholder='Item Name' 
-          variant='outlined' 
-          type='text'
-          size='small'
-          onChange={(e) => {setName(e.target.value)}}
-        />
+    <Grid container item xs={12} spacing={2}>
+      <Grid container item xs={12}>
+        <Grid item md={4} />
+        <Grid container item xs={12} md={2} justify='center' alignItems='center'>
+          <TextField 
+            required
+            placeholder='Item Name' 
+            variant='outlined' 
+            type='text'
+            size='small'
+            onChange={(e) => {setName(e.target.value)}}
+          />
+        </Grid>
+        <Grid container item xs={12} md={2} justify='center'>
+          <TextField 
+            required
+            placeholder='Amount'
+            variant='outlined'
+            size='small'
+            id='input-field'
+            type='number'
+            InputProps={{
+              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+            }} 
+            inputProps={{min: 0, style: { textAlign: 'right'}}}
+            onChange={(e) => {setAmount(e.target.value)}}
+          />
+        </Grid> 
+        <Grid item md={4} />
       </Grid>
-      <Grid container item xs={12} md={2} justify='center'>
-        <TextField 
-          required
-          variant='outlined'
-          size='small'
-          id='input-field'
-          type='number'
-          InputProps={{
-            startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-            inputProps: {min: 0}
-          }} 
-          onChange={(e) => {setAmount(e.target.value)}}
-        />
-      </Grid> 
-      <Grid container item xs={12} md={5}>
-        <FormControl required>
-          <RadioGroup row onChange={(e) => {setType(e.target.value)}}>
-            <FormControlLabel 
-              value='Income'
-              label='Income'
-              control={<Radio/>}
-            />
-            <FormControlLabel 
-              value='Expense'
-              label='Expense'
-              control={<Radio/>}
-            />
-          </RadioGroup>
-        </FormControl>
-        <Button onClick={handleAdd} variant='contained' color='primary'>Add</Button>
+      <Grid container item xs={12}>
+        <Grid item md={4} />
+        <Grid container item xs={12} md={4} justify='center'>
+          <FormControl required>
+            <RadioGroup row onChange={(e) => {setType(e.target.value)}}>
+              <FormControlLabel 
+                value='Income'
+                label='Income'
+                control={<Radio/>}
+              />
+              <FormControlLabel 
+                value='Expense'
+                label='Expense'
+                control={<Radio/>}
+              />
+            </RadioGroup>
+          </FormControl>
+          <Button onClick={handleAdd} variant='contained' color='primary'>Add</Button>
+        </Grid>
+        <Grid item md={4} />
       </Grid>
     </Grid>
   );

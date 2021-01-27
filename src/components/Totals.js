@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 330,
+    minWidth: 370,
     maxWidth: 650
   },
   header: {
@@ -17,9 +17,9 @@ const Totals = (props) => {
 
   return (
     <Grid container item xs={12}>
-      <Grid item xs={4} />
-      <Grid item xs={4}>
-        <TableContainer component={Paper}>
+      <Grid item md={4} />
+      <Grid container item md={4} xs={12} justify='center'>
+        <TableContainer className={classes.table} component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableBody>
               <TableRow>
@@ -38,7 +38,7 @@ const Totals = (props) => {
           </Table>
         </TableContainer>
       </Grid>
-      <Grid item xs={4}/>
+      <Grid item md={4}/>
     </Grid>
   );
 }
