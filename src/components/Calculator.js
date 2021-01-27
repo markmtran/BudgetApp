@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import ItemBar from './ItemBar';
-import TotalLabel from './TotalLabel';
 import Transactions from './Transactions';
+import Totals from './Totals';
 
-const NewCalc = () => {
+const Calculator = () => {
   const [ transactions, addTransaction ] = useState([]);
   const [ totalIncome, setTotalIncome ] = useState(0);
   const [ totalExpense, setTotalExpense ] = useState(0);
@@ -21,11 +21,9 @@ const NewCalc = () => {
         setTotalExpense={setTotalExpense}
       />
       <Transactions transactions={transactions} />
-      <TotalLabel label={'Total Income:'} labelValue={totalIncome} />
-      <TotalLabel label={'Total Expenses:'} labelValue={totalExpense} />
-      <TotalLabel label={'Net Income:'} labelValue={netIncome} />
+      <Totals totalIncome={totalIncome} totalExpense={totalExpense} netIncome={netIncome} />
     </Grid>
   );
 }
 
-export default NewCalc;
+export default Calculator;

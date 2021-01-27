@@ -12,7 +12,7 @@ const ItemBar = (props) => {
   }
   return (
     <Grid container item xs={12}>
-      <Grid container item xs={5} justify='flex-end' alignItems='center'>
+      <Grid container item xs={12} md={5} justify='flex-end' alignItems='center'>
         <TextField 
           required
           placeholder='Item Name' 
@@ -22,7 +22,7 @@ const ItemBar = (props) => {
           onChange={(e) => {setName(e.target.value)}}
         />
       </Grid>
-      <Grid container item xs={2} justify='center'>
+      <Grid container item xs={12} md={2} justify='center'>
         <TextField 
           required
           variant='outlined'
@@ -36,7 +36,7 @@ const ItemBar = (props) => {
           onChange={(e) => {setAmount(e.target.value)}}
         />
       </Grid> 
-      <Grid container item xs={5}>
+      <Grid container item xs={12} md={5}>
         <FormControl required>
           <RadioGroup row onChange={(e) => {setType(e.target.value)}}>
             <FormControlLabel 

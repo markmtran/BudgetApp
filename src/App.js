@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import NewCalc from './components/NewCalc';
+import Calculator from './components/Calculator';
 
 const App = () => {
   return (
     <React.Fragment>
-      <NewCalc />
+      <Calculator />
     </React.Fragment>
   );
 }

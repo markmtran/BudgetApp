@@ -4,7 +4,8 @@ import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, Ta
 
 const useStyles = makeStyles({
   table: {
-    maxwidth: 650
+    minWidth: 330,
+    maxWidth: 650
   },
   header: {
     fontWeight: 'bold'
@@ -15,7 +16,7 @@ const Transactions = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid container xs={12}>
+    <Grid container item xs={12}>
       <Grid item xs={4} />
       <Grid item xs={4}>
         <TableContainer component={Paper}>
