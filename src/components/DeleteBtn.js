@@ -1,9 +1,12 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const DeleteBtn = () => {
   return (
-    <Button variant='contained' color='secondary'>Delete</Button>
+    <IconButton>
+      <ClearIcon color='secondary'/>
+    </IconButton>
   );
 }
 

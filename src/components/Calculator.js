@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import ItemBar from './ItemBar';
 import Transactions from './Transactions';
 import Totals from './Totals';
+import DeleteBtn from './DeleteBtn';
 
 const Calculator = () => {
   const [ transactions, addTransaction ] = useState([]);

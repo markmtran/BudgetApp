@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import DeleteBtn from './DeleteBtn';
 
 const useStyles = makeStyles({
   table: {
@@ -25,15 +26,17 @@ const Transactions = (props) => {
               <TableRow>
                 <TableCell className={classes.header}>Item Name</TableCell>
                 <TableCell className={classes.header} align='center'>Type</TableCell>
-                <TableCell className={classes.header} align='right'>Amount ($)</TableCell>
+                <TableCell className={classes.header} align='center'>Amount ($)</TableCell>
+                <TableCell className={classes.header} align='right'>Remove</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {(props.transactions).map((transaction) => (
-                <TableRow>
+                <TableRow style={{backgroundColor: transaction.color}}>
                   <TableCell>{transaction.name}</TableCell>
                   <TableCell align='center'>{transaction.type}</TableCell>
-                  <TableCell align='right'>{transaction.amount}</TableCell>
+                  <TableCell align='center'>{transaction.amount}</TableCell>
+                  <TableCell align='right' padding='none'><DeleteBtn /></TableCell>
                 </TableRow>
               ))}
             </TableBody>
