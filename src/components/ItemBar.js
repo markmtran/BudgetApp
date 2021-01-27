@@ -17,7 +17,7 @@ const ItemBar = (props) => {
   }
 
   const handleAdd = () => {
-    props.addTransaction([...props.transactions, { name: name, type: type, amount: amount, color: color}]);
+    props.setTransactions([...props.transactions, { name: name, type: type, amount: amount, color: color}]);
     type === 'Income' ? props.setTotalIncome(props.totalIncome + parseInt(amount)) : props.setTotalExpense(props.totalExpense + parseInt(amount));
   }
 

@@ -15,6 +15,11 @@ const useStyles = makeStyles({
 
 const Transactions = (props) => {
   const classes = useStyles();
+  
+  const handleDelete = (i) => {
+    props.transactions.splice(i, 1);
+    props.setTransactions(props.transactions);
+  };
 
   return (
     <Grid container item xs={12}>
@@ -31,12 +36,12 @@ const Transactions = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {(props.transactions).map((transaction) => (
-                <TableRow style={{backgroundColor: transaction.color}}>
+              {(props.transactions).map((transaction, i) => (
+                <TableRow style={{backgroundColor: transaction.color}} key={i}>
                   <TableCell>{transaction.name}</TableCell>
                   <TableCell align='center'>{transaction.type}</TableCell>
                   <TableCell align='center'>{transaction.amount}</TableCell>
-                  <TableCell align='right' padding='none'><DeleteBtn /></TableCell>
+                  <TableCell align='right' padding='none'><DeleteBtn onClick={() => handleDelete(i)}/></TableCell>
                 </TableRow>
               ))}
             </TableBody>
