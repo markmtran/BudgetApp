@@ -11,7 +11,7 @@ const Calculator = () => {
   const netIncome = totalIncome - totalExpense;
   console.log(transactions);
   return (
-    <Grid container item justify='center' alignItems='center' xs={12} spacing={6}>
+    <Grid container item justify='center' alignItems='center' xs={12}>
       <ItemBar 
         transactions={transactions} 
         setTransactions={setTransactions} 
@@ -28,7 +28,10 @@ const Calculator = () => {
         totalExpense={totalExpense}
         setTotalExpense={setTotalExpense}
       />
-      <Totals totalIncome={totalIncome} totalExpense={totalExpense} netIncome={netIncome} />
+      <Totals 
+        totalIncome={totalIncome} 
+        totalExpense={totalExpense} 
+        netIncome={netIncome} />
     </Grid>
   );
 }

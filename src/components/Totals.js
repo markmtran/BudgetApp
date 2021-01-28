@@ -9,6 +9,9 @@ const useStyles = makeStyles({
   },
   header: {
     fontWeight: 'bold'
+  },
+  space: {
+    marginTop: 10,
   }
 });
 
@@ -16,7 +19,7 @@ const Totals = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid container item xs={12}>
+    <Grid container item xs={12} className={classes.space}>
       <Grid item md={4} />
       <Grid container item md={4} xs={12} justify='center'>
         <TableContainer className={classes.table} component={Paper}>
