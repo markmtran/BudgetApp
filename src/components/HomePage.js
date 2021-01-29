@@ -5,7 +5,7 @@ import Calculator from './Calculator';
 const HomePage = () => {
   return (
     <div>
-      <NavBar title={'Budget Calculator'} />
+      <NavBar />
       <Calculator />
     </div>
   );

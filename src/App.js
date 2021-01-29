@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import HomePage from './components/HomePage';
 import HistoryPage from './components/HistoryPage';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 const App = () => {
   return (

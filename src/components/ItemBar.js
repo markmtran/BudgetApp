@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Button, FormControl, FormControlLabel, Grid, InputAdornment, Radio, RadioGroup, TextField } from '@material-ui/core';
 
-const useStyles = makeStyles({
-  space: {
-    marginTop: 100,
-    marginBottom: 10
-  }
-});
-
 const ItemBar = (props) => {
-  const classes = useStyles();
   const [ name, setName ] = useState("");
   const [ type, setType ] = useState("");
   const [ amount, setAmount ] = useState(0);
@@ -37,22 +28,18 @@ const ItemBar = (props) => {
     if (e.target.value.length > 0) {
       setName(e.target.value);
       setIsNameFilled(true);
-    } else {
-      setIsNameFilled(false)
     }
   }
 
   const checkAmount = (e) => {
-    if (e.target.value.length > 0 && e.target.value > 0) {
+    if (e.target.value.length > 0) {
       setAmount(e.target.value);
       setIsAmountFilled(true);
-    } else {
-      setIsAmountFilled(false)
     }
   }
 
   return (
-    <Grid container item xs={12} spacing={2} className={classes.space}>
+    <Grid container item xs={12} spacing={2}>
       <Grid container item xs={12}>
         <Grid item md={4} />
         <Grid container item xs={12} md={2} justify='center' alignItems='center'>
@@ -62,9 +49,6 @@ const ItemBar = (props) => {
             variant='outlined' 
             type='text'
             size='small'
-            InputProps={{
-              startAdornment: <InputAdornment position='end' disableTypography style={{color: 'white'}}>$</InputAdornment>,
-            }} 
             onChange={(e) => {checkName(e)}}
           />
         </Grid>
@@ -79,7 +63,7 @@ const ItemBar = (props) => {
             InputProps={{
               startAdornment: <InputAdornment position='start'>$</InputAdornment>,
             }} 
-            inputProps={{min: 1, style: { textAlign: 'right'}}}
+            inputProps={{min: 0, style: { textAlign: 'right'}}}
             onChange={(e) => {checkAmount(e)}}
           />
         </Grid> 
