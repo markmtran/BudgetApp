@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Menu, MenuItem, AppBar, Button, Toolbar, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+const NavBar = (props) => {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,11 +48,11 @@ const NavBar = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Calculator</MenuItem>
-          <MenuItem onClick={handleClose}>History</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to='/'>Calculator</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to='/history'>History</MenuItem>
         </Menu>
         <Typography variant="h6" className={classes.title}>
-          Budget Calculator
+          {props.title}
         </Typography>
         <Button color="inherit">Login</Button>
       </Toolbar>

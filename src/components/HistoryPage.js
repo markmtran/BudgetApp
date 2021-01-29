@@ -5,7 +5,7 @@ import History from './History';
 const HistoryPage = () => {
   return (
     <div>
-      <NavBar />
+      <NavBar title={'Budget History'} />
       <History />
     </div>
   );

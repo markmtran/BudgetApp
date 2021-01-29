@@ -26,9 +26,9 @@ const Transactions = (props) => {
     const deletedItem = deletedItemArray[0];
     props.setTransactions(newTransactions);
     if (deletedItem.type === 'Income') {
-      props.setTotalIncome(props.totalIncome - parseInt(deletedItem.amount));
+      props.setTotalIncome(props.totalIncome - parseFloat(deletedItem.amount));
     } else if (deletedItem.type === 'Expense') {
-      props.setTotalExpense(props.totalExpense - parseInt(deletedItem.amount));
+      props.setTotalExpense(props.totalExpense - parseFloat(deletedItem.amount));
     }
   };
 

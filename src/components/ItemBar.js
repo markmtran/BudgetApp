@@ -30,20 +30,24 @@ const ItemBar = (props) => {
 
   const handleAdd = () => {
     props.setTransactions([...props.transactions, { name: name, type: type, amount: amount, color: color}]);
-    type === 'Income' ? props.setTotalIncome(props.totalIncome + parseInt(amount)) : props.setTotalExpense(props.totalExpense + parseInt(amount));
+    type === 'Income' ? props.setTotalIncome(props.totalIncome + parseFloat(amount)) : props.setTotalExpense(props.totalExpense + parseFloat(amount));
   }
 
   const checkName = (e) => {
     if (e.target.value.length > 0) {
       setName(e.target.value);
       setIsNameFilled(true);
+    } else {
+      setIsNameFilled(false);
     }
   }
 
   const checkAmount = (e) => {
-    if (e.target.value.length > 0) {
+    if (e.target.value.length > 0 && e.target.value > 0) {
       setAmount(e.target.value);
       setIsAmountFilled(true);
+    } else {
+      setIsAmountFilled(false);
     }
   }
 

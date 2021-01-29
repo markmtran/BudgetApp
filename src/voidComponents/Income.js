@@ -9,7 +9,7 @@ const Income = (props) => {
   const handleIncomeValue = () => {
     const input = document.getElementById('input-field');
     setIncomeValue(input.value);
-    const final = parseInt(input.value) + parseInt(props.totalIncome);
+    const final = parseFloat(input.value) + parseFloat(props.totalIncome);
     props.setTotalIncome(final);
   };
 
