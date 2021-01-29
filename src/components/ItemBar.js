@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { Button, FormControl, FormControlLabel, Grid, InputAdornment, Radio, RadioGroup, TextField } from '@material-ui/core';
 
+const useStyles = makeStyles({
+  space: {
+    marginTop: 100,
+    marginBottom: 10
+  }
+});
+
 const ItemBar = (props) => {
+  const classes = useStyles();
   const [ name, setName ] = useState("");
   const [ type, setType ] = useState("");
   const [ amount, setAmount ] = useState(0);
@@ -39,7 +48,7 @@ const ItemBar = (props) => {
   }
 
   return (
-    <Grid container item xs={12} spacing={2}>
+    <Grid container item xs={12} spacing={2} className={classes.space}>
       <Grid container item xs={12}>
         <Grid item md={4} />
         <Grid container item xs={12} md={2} justify='center' alignItems='center'>
@@ -49,6 +58,9 @@ const ItemBar = (props) => {
             variant='outlined' 
             type='text'
             size='small'
+            InputProps={{
+              startAdornment: <InputAdornment position='start' style={{color: 'white'}} disableTypography>$</InputAdornment>,
+            }} 
             onChange={(e) => {checkName(e)}}
           />
         </Grid>
