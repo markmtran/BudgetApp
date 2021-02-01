@@ -29,7 +29,7 @@ var actionCodeSettings = {
   dynamicLinkDomain: 'example.page.link'
 };
 
-const LogIn = () => {
+const SignUp = () => {
   const classes = useStyles();
 
   // firebase.auth().onAuthStateChanged(function(user) {
@@ -109,4 +109,4 @@ const LogIn = () => {
   );
 }
 
-export default LogIn;
+export default SignUp;
