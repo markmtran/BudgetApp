@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import SignUp from './SignUp';
 
-const HistoryPage = () => {
+const SignUpPage = () => {
   return (
     <div>
       <NavBar title={'Sign-Up'} />
@@ -11,4 +11,4 @@ const HistoryPage = () => {
   );
 }
 
-export default HistoryPage;
+export default SignUpPage;
