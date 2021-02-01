@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import Calculator from './Calculator';
 
-const HomePage = () => {
+const CalcPage = () => {
   return (
     <div>
       <NavBar title={'Budget Calculator'} />
@@ -11,4 +11,4 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;
+export default CalcPage;
