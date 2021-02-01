@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './NavBar';
+import NavBar from '../NavBar';
 import Calculator from './Calculator';
 
 const CalcPage = () => {

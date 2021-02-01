@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import LogInPage from './components/LogInPage';
-import SignUpPage from './components/SignUpPage';
-import CalcPage from './components/CalcPage';
-import HistoryPage from './components/HistoryPage';
+import LogInPage from './components/userauth/LogInPage';
+import SignUpPage from './components/userauth/SignUpPage';
+import CalcPage from './components/calculator/CalcPage';
+import HistoryPage from './components/history/HistoryPage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const App = () => {
