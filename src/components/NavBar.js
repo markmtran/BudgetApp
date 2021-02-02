@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Menu, MenuItem, AppBar, Button, Toolbar, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
-import fire from '../base';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +54,7 @@ const NavBar = (props) => {
         <Typography variant="h6" className={classes.title}>
           {props.title}
         </Typography>
-        <Button onClick={() => fire.auth().signOut()} color="inherit">Sign Out</Button>
+        <Button color="inherit">Sign Out</Button>
       </Toolbar>
     </AppBar>
   );

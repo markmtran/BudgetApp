@@ -6,7 +6,7 @@ const SignUpPage = () => {
   return (
     <div>
       <NavBar title={'Sign-Up'} />
-      <SignUp />
+      <SignUp btnName={'Sign-Up'} />
     </div>
   );
 }

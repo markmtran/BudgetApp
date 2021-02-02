@@ -1,8 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, TextField, Button } from '@material-ui/core';
-import fire from '../../base';
 
 const useStyles = makeStyles({
   space: {
@@ -14,7 +12,7 @@ const useStyles = makeStyles({
   }
 });
 
-const SignUp = ({ history }) => {
+const SignUp = (props) => {
   const classes = useStyles();
 
   const [ email, setEmail ] = useState("");
@@ -40,16 +38,10 @@ const SignUp = ({ history }) => {
     }
   }
 
-  const handleSignUp = useCallback(async e => {
-    e.preventDefault();
-    try {
-      await fire.auth().createUserWithEmailAndPassword(email, password);
-      history.push('/');
-    } catch (error) {
-      alert(error);
-    }
-  }, [history]);
-
+  const handleSignUp = () => {
+    window.alert('hi');
+  }
+ 
   return(
     <Grid container item justify='center' alignItems='center' xs={12} className={classes.space}>
       <Grid container item xs={12}>
@@ -97,7 +89,7 @@ const SignUp = ({ history }) => {
             variant='contained' 
             color='primary'
             onClick={handleSignUp}
-          >Submit</Button>
+          >{props.btnName}</Button>
         </Grid>
         <Grid item xs={3} md={5} />
       </Grid>
@@ -105,4 +97,4 @@ const SignUp = ({ history }) => {
   );
 }
 
-export default withRouter(SignUp);
+export default SignUp;
