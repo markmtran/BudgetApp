@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, TextField, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import firebase from '../../firebase';
 import 'firebase/auth';
 import { useHistory } from 'react-router-dom';
@@ -9,9 +10,12 @@ const useStyles = makeStyles({
   space: {
     marginTop: 250
   },
-  spacing: {
+  passSpace: {
     marginTop: 20,
     marginBottom: 20
+  },
+  toLoginSpace: {
+    marginTop: 20
   }
 });
 
@@ -25,7 +29,6 @@ const SignUp = (props) => {
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
     .then((userCredential) => {
       // Signed in 
-      var user = userCredential.user;
       history.push('/login');
     })
     .catch((error) => {
@@ -54,7 +57,7 @@ const SignUp = (props) => {
         <Grid item xs={3} md={5} />
       </Grid>
 
-      <Grid container item xs={12} className={classes.spacing}>
+      <Grid container item xs={12} className={classes.passSpace}>
         <Grid item xs={3} md={5} />
         <Grid container item xs={6} md={2} justify='center' alignItems='center'>
           <TextField
@@ -80,6 +83,16 @@ const SignUp = (props) => {
             color='primary'
             onClick={handleSignUp}
           >{props.btnName}</Button>
+        </Grid>
+        <Grid item xs={3} md={5} />
+      </Grid>
+
+      <Grid container item xs={12} className={classes.toLoginSpace}>
+        <Grid item xs={3} md={5} />
+        <Grid container item xs={6} md={2} justify='center' alignItems='center'>
+          <Link to='/login'>
+            I have an account.
+          </Link>
         </Grid>
         <Grid item xs={3} md={5} />
       </Grid>

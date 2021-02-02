@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Menu, MenuItem, AppBar, Button, Toolbar, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,6 +31,14 @@ const NavBar = (props) => {
     setAnchorEl(null);
   };
 
+  const handleSignOut = () => {
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
+
   return(
     <AppBar position='static'>
       <Toolbar>
@@ -49,13 +58,13 @@ const NavBar = (props) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose} component={Link} to='/calculator'>Calculator</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to='/'>Calculator</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to='/history'>History</MenuItem>
         </Menu>
         <Typography variant="h6" className={classes.title}>
           {props.title}
         </Typography>
-        <Button style={{display: props.signOut}} color="inherit">Sign Out</Button>
+        <Button style={{display: props.signOut}} color="inherit" onClick={handleSignOut}>Sign Out</Button>
       </Toolbar>
     </AppBar>
   );

@@ -3,8 +3,10 @@ import NavBar from '../NavBar';
 import Calculator from './Calculator';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { useHistory } from 'react-router-dom';
 
 const CalcPage = () => {
+  const history = useHistory();
   const [ username, setUsername] = useState("");
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -13,11 +15,10 @@ const CalcPage = () => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         setUsername(user.email);
       } else {
-        // User is signed out
-        // ...
+        history.push('/signup');
       }
     });
-  }, []);
+  }, [ history ]);
 
   return (
     <div>
