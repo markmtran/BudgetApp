@@ -5,8 +5,8 @@ import LogIn from './LogIn';
 const LogInPage = () => {
   return (
     <div>
-      <NavBar title={'Log-In'} />
-      <LogIn />
+      <NavBar title={'Log-In'} signOut={'none'} />
+      <LogIn btnName={'Log-in'} />
     </div>
   );
 }

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, TextField, Button } from '@material-ui/core';
+import firebase from '../../firebase';
+import 'firebase/auth';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   space: {
@@ -12,51 +15,22 @@ const useStyles = makeStyles({
   }
 });
 
-var actionCodeSettings = {
-  // URL you want to redirect back to. The domain (www.example.com) for this
-  // URL must be in the authorized domains list in the Firebase Console.
-  url: 'https://www.mark-t-budget.firebaseapp.com',
-  // This must be true.
-  handleCodeInApp: true,
-  iOS: {
-    bundleId: 'com.example.ios'
-  },
-  android: {
-    packageName: 'com.example.android',
-    installApp: true,
-    minimumVersion: '12'
-  },
-  dynamicLinkDomain: 'example.page.link'
-};
-
-const LogIn = () => {
+const LogIn = (props) => {
   const classes = useStyles();
-
-  // firebase.auth().onAuthStateChanged(function(user) {
-  //   if (user) {
-  //     // User is signed in.
-  //   } else {
-  //     // No user is signed in.
-  //   }
-  // });
+  const history = useHistory();
 
   const handleLogin = () => {
-    const userEmail = document.getElementById('email-field').value;
-    const userPass = document.getElementById('password-field').value;
-    
-    window.alert('working');
-
-    // firebase.auth().createUserWithEmailAndPassword(userEmail, userPass)
-    // .then((userCredential) => {
-    //   // Signed in 
-    //   var user = userCredential.user;
-    //   // ...
-    // })
-    // .catch((error) => {
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // ..
-    // });
+    const email = document.getElementById('email-field');
+    const password = document.getElementById('password-field');
+    firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+    .then((userCredential) => {
+      // Signed in 
+      history.push('/');
+    })
+    .catch((error) => {
+      var errorMessage = error.message;
+      window.alert(errorMessage);
+    });
   }
 
   return(
@@ -101,7 +75,7 @@ const LogIn = () => {
             variant='contained' 
             color='primary'
             onClick={handleLogin}
-          >Submit</Button>
+          >{props.btnName}</Button>
         </Grid>
         <Grid item xs={3} md={5} />
       </Grid>

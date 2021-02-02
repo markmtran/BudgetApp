@@ -5,7 +5,7 @@ import SignUp from './SignUp';
 const SignUpPage = () => {
   return (
     <div>
-      <NavBar title={'Sign-Up'} />
+      <NavBar title={'Sign-Up'} signOut={'none'} />
       <SignUp btnName={'Sign-Up'} />
     </div>
   );
