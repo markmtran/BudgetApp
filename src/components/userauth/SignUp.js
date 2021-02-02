@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, TextField, Button } from '@material-ui/core';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const useStyles = makeStyles({
   space: {
@@ -39,7 +41,17 @@ const SignUp = (props) => {
   }
 
   const handleSignUp = () => {
-    window.alert('hi');
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Signed in 
+      var user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ..
+    });
   }
  
   return(
