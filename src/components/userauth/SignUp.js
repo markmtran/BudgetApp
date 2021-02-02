@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, TextField, Button } from '@material-ui/core';
+import fire from '../../base';
 
 const useStyles = makeStyles({
   space: {
@@ -12,35 +14,41 @@ const useStyles = makeStyles({
   }
 });
 
-const SignUp = () => {
+const SignUp = ({ history }) => {
   const classes = useStyles();
 
-  // firebase.auth().onAuthStateChanged(function(user) {
-  //   if (user) {
-  //     // User is signed in.
-  //   } else {
-  //     // No user is signed in.
-  //   }
-  // });
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword] = useState("");
+  const [ isEmailFilled, setIsEmailFilled ] = useState(false);
+  const [ isPasswordFilled, setIsPasswordFilled ] = useState(false);
 
-  const handleLogin = () => {
-    const userEmail = document.getElementById('email-field').value;
-    const userPass = document.getElementById('password-field').value;
-    
-    window.alert('working');
-
-    // firebase.auth().createUserWithEmailAndPassword(userEmail, userPass)
-    // .then((userCredential) => {
-    //   // Signed in 
-    //   var user = userCredential.user;
-    //   // ...
-    // })
-    // .catch((error) => {
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // ..
-    // });
+  const checkEmail = (e) => {
+    if (e.target.value.length > 0) {
+      setEmail(e.target.value);
+      setIsEmailFilled(true);
+    } else {
+      setIsEmailFilled(false);
+    }
   }
+
+  const checkPassword = (e) => {
+    if (e.target.value.length > 0) {
+      setPassword(e.target.value);
+      setIsPasswordFilled(true);
+    } else {
+      setIsPasswordFilled(false);
+    }
+  }
+
+  const handleSignUp = useCallback(async e => {
+    e.preventDefault();
+    try {
+      await fire.auth().createUserWithEmailAndPassword(email, password);
+      history.push('/');
+    } catch (error) {
+      alert(error);
+    }
+  }, [history]);
 
   return(
     <Grid container item justify='center' alignItems='center' xs={12} className={classes.space}>
@@ -50,11 +58,13 @@ const SignUp = () => {
           <TextField
             required
             fullWidth
+            name='email'
             placeholder='Email' 
             variant='outlined' 
             type='email'
             size='small'
             id='email-field'
+            onChange={(e) => {checkEmail(e)}}
           />
         </Grid>
         <Grid item xs={3} md={5} />
@@ -66,11 +76,13 @@ const SignUp = () => {
           <TextField
             required
             fullWidth
+            name='password'
             placeholder='Password' 
             variant='outlined' 
             type='password'
             size='small'
             id='password-field'
+            onChange={(e) => {checkPassword(e)}}
           />
         </Grid>
         <Grid item xs={3} md={5} />
@@ -81,9 +93,10 @@ const SignUp = () => {
         <Grid container item xs={6} md={2} justify='center' alignItems='center'>
           <Button 
             fullWidth 
+            disabled={!(isEmailFilled && isPasswordFilled)}
             variant='contained' 
             color='primary'
-            onClick={handleLogin}
+            onClick={handleSignUp}
           >Submit</Button>
         </Grid>
         <Grid item xs={3} md={5} />
@@ -92,4 +105,4 @@ const SignUp = () => {
   );
 }
 
-export default SignUp;
+export default withRouter(SignUp);

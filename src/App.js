@@ -5,19 +5,21 @@ import SignUpPage from './components/userauth/SignUpPage';
 import CalcPage from './components/calculator/CalcPage';
 import HistoryPage from './components/history/HistoryPage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AuthProvider } from './auth';
+import PrivateRoute from './PrivateRoute';
 
 const App = () => {
   return (
-    <React.Fragment>
+    <AuthProvider>
       <BrowserRouter>
         <Switch>
           <Route exact path='/login' component={LogInPage} />
           <Route exact path='/signup' component={SignUpPage} />
-          <Route exact path='/' component={CalcPage} />
+          <PrivateRoute exact path='/' component={CalcPage} />
           <Route path='/history' component={HistoryPage} />
         </Switch>
       </BrowserRouter>
-    </React.Fragment>
+    </AuthProvider>
   );
 }
 
