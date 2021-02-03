@@ -58,7 +58,7 @@ const NavBar = (props) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose} component={Link} to='/'>Calculator</MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to='/home'>Calculator</MenuItem>
           <MenuItem onClick={handleClose} component={Link} to='/history'>History</MenuItem>
         </Menu>
         <Typography variant="h6" className={classes.title}>

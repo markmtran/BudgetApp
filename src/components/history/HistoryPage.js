@@ -15,7 +15,7 @@ const HistoryPage = () => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         setUsername(user.email);
       } else {
-        history.push('/signup');
+        history.push('/');
       }
     });
   }, [ history ]);
