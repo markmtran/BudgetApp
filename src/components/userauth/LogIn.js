@@ -25,7 +25,7 @@ const LogIn = (props) => {
     firebase.auth().signInWithEmailAndPassword(email.value, password.value)
     .then((userCredential) => {
       // Signed in 
-      history.push('/');
+      history.push('/home');
     })
     .catch((error) => {
       var errorMessage = error.message;
