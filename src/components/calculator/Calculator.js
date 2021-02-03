@@ -3,13 +3,15 @@ import { Grid } from '@material-ui/core';
 import ItemBar from './ItemBar';
 import Transactions from './Transactions';
 import Totals from './Totals';
+import SubmitBtn from './SubmitBtn';
 
-const Calculator = () => {
+const Calculator = (props) => {
   const [ transactions, setTransactions ] = useState([]);
   const [ totalIncome, setTotalIncome ] = useState(0);
   const [ totalExpense, setTotalExpense ] = useState(0);
   const netIncome = totalIncome - totalExpense;
-  console.log(transactions);
+  const username = props.username;
+
   return (
     <Grid container item justify='center' alignItems='center' xs={12}>
       <ItemBar 
@@ -28,7 +30,18 @@ const Calculator = () => {
         totalExpense={totalExpense}
         setTotalExpense={setTotalExpense}
       />
-      <Totals totalIncome={totalIncome} totalExpense={totalExpense} netIncome={netIncome} />
+      <Totals 
+        totalIncome={totalIncome} 
+        totalExpense={totalExpense} 
+        netIncome={netIncome} 
+      />
+
+      <SubmitBtn 
+        totalIncome={totalIncome} 
+        totalExpense={totalExpense} 
+        netIncome={netIncome} 
+        username={username}
+      />
     </Grid>
   );
 }

@@ -1,25 +1,11 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import firebase from 'firebase/app';
-
-var db = firebase.firestore();
+// import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 const History = () => {
-  const handleAdd = () => {
-    db.collection("users").add({
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-  }
   return (
-    <Button onClick={handleAdd}></Button>
+    <Button variant='contained' color='primary'>add</Button>
   );
 }
 

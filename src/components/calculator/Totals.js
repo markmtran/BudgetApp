@@ -11,7 +11,8 @@ const useStyles = makeStyles({
     fontWeight: 'bold'
   },
   space: {
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 20
   }
 });
 

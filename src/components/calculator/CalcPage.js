@@ -23,7 +23,7 @@ const CalcPage = () => {
   return (
     <div>
       <NavBar title={'Welcome, ' + username + '!'} />
-      <Calculator />
+      <Calculator username={username} />
     </div>
   );
 }
