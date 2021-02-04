@@ -19,8 +19,13 @@ const SubmitBtn = (props) => {
   const [open, setOpen] = useState(false);
 
   const handleSubmit = () => {
-    const time = Date();
-    db.collection(props.username).doc(time).set({
+    const dateObj = new Date();
+    const date = (dateObj.getMonth()+1) + '-' + dateObj.getDate() + '-' + dateObj.getFullYear();
+    const time = dateObj.toLocaleTimeString('en-US');
+    const timeStamp = date + ', ' + time;
+    console.log(timeStamp);
+
+    db.collection(props.username).doc(timeStamp).set({
       totalIncome: props.totalIncome,
       totalExpense: props.totalExpense,
       netIncome: props.netIncome

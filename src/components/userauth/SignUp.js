@@ -88,13 +88,13 @@ const SignUp = (props) => {
       </Grid>
 
       <Grid container item xs={12} className={classes.toLoginSpace}>
-        <Grid item xs={3} md={5} />
-        <Grid container item xs={6} md={2} justify='center' alignItems='center'>
-          <Link to='/login'>
-            I have an account.
+        <Grid item xs={3} md={4} />
+        <Grid container item xs={6} md={4} justify='center' alignItems='center'>
+          <Link to='/'>
+            I already have an account.
           </Link>
         </Grid>
-        <Grid item xs={3} md={5} />
+        <Grid item xs={3} md={4} />
       </Grid>
     </Grid>
   );

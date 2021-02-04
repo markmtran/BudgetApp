@@ -26,34 +26,26 @@ const History = (props) => {
   const [ submissions, setSubmissions ] = useState([]);
 
   useEffect(() => {
-    console.log(username);
-    db.collection(username).get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const docObj = doc.data()
-        const newDocObj = {
-          date: doc.id, 
-          income: docObj.totalIncome, 
-          expense: docObj.totalExpense,
-          net: docObj.netIncome
-        };
-        setSubmissions([...submissions, newDocObj]);
-      });
-    });
-  }, [username, submissions]);
-
-  // console.log(username);
-  // db.collection(username).get().then((querySnapshot) => {
-  //   querySnapshot.forEach((doc) => {
-  //     const docObj = doc.data()
-  //     const newDocObj = {
-  //       date: doc.id, 
-  //       income: docObj.totalIncome, 
-  //       expense: docObj.totalExpense,
-  //       net: docObj.netIncome
-  //     };
-  //     setSubmissions([...submissions, newDocObj]);
-  //   });
-  // });
+    function getSubmissions() { 
+      if (username) {
+        db.collection(username).get().then((querySnapshot) => {
+          const newSubmissions = [];
+          querySnapshot.forEach((doc) => {
+            const docObj = doc.data()
+            const newDocObj = {
+              date: doc.id, 
+              income: docObj.totalIncome, 
+              expense: docObj.totalExpense,
+              net: docObj.netIncome
+            };
+            newSubmissions.push(newDocObj);
+          });
+          setSubmissions(newSubmissions);
+        });
+      }
+    }
+    getSubmissions();
+  }, [username]);
 
   return (
     <Grid container item xs={12} className={classes.space}>
@@ -72,7 +64,7 @@ const History = (props) => {
             <TableBody>
               {(submissions).map((submission) => (
                 <TableRow>
-                  <TableCell>{submission.name}</TableCell>
+                  <TableCell>{submission.date}</TableCell>
                   <TableCell align='center'>{submission.income}</TableCell>
                   <TableCell align='center'>{submission.expense}</TableCell>
                   <TableCell align='right'>{submission.net}</TableCell>

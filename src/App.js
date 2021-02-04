@@ -10,8 +10,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/' component={SignUpPage} />
-        <Route exact path='/login' component={LogInPage} />
+        <Route exact path='/' component={LogInPage} />
+        <Route exact path='/signup' component={SignUpPage} />
         <Route exact path='/home' component={CalcPage} />
         <Route path='/history' component={HistoryPage} />
       </Switch>

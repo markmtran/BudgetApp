@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, TextField, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import firebase from '../../firebase';
 import 'firebase/auth';
 import { useHistory } from 'react-router-dom';
@@ -12,6 +13,9 @@ const useStyles = makeStyles({
   spacing: {
     marginTop: 20,
     marginBottom: 20
+  },
+  toSignUpSpace: {
+    marginTop: 20
   }
 });
 
@@ -78,6 +82,16 @@ const LogIn = (props) => {
           >{props.btnName}</Button>
         </Grid>
         <Grid item xs={3} md={5} />
+      </Grid>
+
+      <Grid container item xs={12} className={classes.toSignUpSpace}>
+        <Grid item xs={3} md={4} />
+        <Grid container item xs={6} md={4} justify='center' alignItems='center'>
+          <Link to='/signup'>
+            Don't have an account? Sign-up here!
+          </Link>
+        </Grid>
+        <Grid item xs={3} md={4} />
       </Grid>
     </Grid>
   );
