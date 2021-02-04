@@ -19,11 +19,11 @@ const HistoryPage = () => {
       }
     });
   }, [ history ]);
-  
+
   return (
     <div>
       <NavBar title={username + '\'s Budget History'} />
-      <History />
+      <History username={username} />
     </div>
   );
 }

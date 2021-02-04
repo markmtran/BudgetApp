@@ -19,7 +19,8 @@ const SubmitBtn = (props) => {
   const [open, setOpen] = useState(false);
 
   const handleSubmit = () => {
-    db.collection(props.username).add({
+    const time = Date();
+    db.collection(props.username).doc(time).set({
       totalIncome: props.totalIncome,
       totalExpense: props.totalExpense,
       netIncome: props.netIncome
